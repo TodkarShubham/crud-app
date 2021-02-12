@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <link rel="stylesheet" href="/css/style.css">
+        <title>CRUD-APP</title>
+     </head>
+
+<body>
+    {{>header}}
+    <div class="main-content">
+
+     <form action="/category/{{cat._id}}" method="POST">
+          
+            <input type="text" name="category_name" id="inputcat" value="{{cat.category_name}}"  class="product-input" required>
+            <br><br>
+            <input type="submit" class="btn btn-secondary" value="Update Category" onclick="return alert('Product Updated')">
+     </form>
+    </div>       
+    </body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <link rel="stylesheet" href="/css/style.css">
+        <title>CRUD-APP</title>
+
+     </head>
+
+<body>
+ {{>header}}
+    <div class="main-content">
+     <form action="/product/{{prod._id}}" method="POST">
+            
+            <input type="text" name="product_name" id="inputprod" value="{{prod.product_name}}" class="product-input" required><br><br>
+            
+            <input type="text" name="category_id" id="inputcatid" value="{{prod.category_id}}" class="product-input" readonly><br><br>
+            
+            <select id="dd" name="catname" class="product-input" required>
+                 <option value="{{prod.category_name}}" selected disabled hidden>{{prod.category_name}}</option>
+                {{# each catnames}}
+                <option value="{{this.category_name}}">{{this.category_name}}</option>
+                {{/each}}
+            </select><br><br>
+
+            <input type="submit" class="btn btn-secondary" value="Update Product" onclick="return alert('Product Updated')">
+            
+            </form>
+    </div>       
+    </body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+    <html>
+        
+        <head>  
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+            <link rel="stylesheet" href="/css/style.css">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+            <title>CRUD-App</title>
+        </head>
+        
+        <body>
+            {{>header}}
+    <div class="main-content">
+            <nav class="nav nav-pills nav-fill">
+  <a class="nav-link active" aria-current="page" href="#">Product</a>
+  <a class="nav-link" href="/category">Category</a>
+  <a class="nav-link" href="/">Home</a>
+</nav><br>
+         
+            <form action="/product" method="POST">
+          
+            <input type="text" name="product_name" id="inputprod" class="product-input" placeholder="Enter Product Name" required ><br>
+           
+           {{!-- <div class="select" > --}}
+             <select id="dd" name="catname" class="select" required>
+                 <option value="" selected disabled hidden>Select Category</option>
+                {{# each categoryname}}
+                <option value="{{this.category_name}}">{{this.category_name}}</option>
+                {{/each}}
+            </select>
+            <br>
+           {{!-- </div> --}}
+             <input type="submit" class="btn btn-secondary" value="Add Product">
+            </form>
+        </div> 
+            <br>
+         <div class="table-content">   
+            <table class="table">
+                <thead class="table-light">
+                    <tr>
+                        <th>Product ID</th>
+                        <th>Product Name</th>
+                        <th>Category ID</th>
+                        <th>Category Name</th>
+                    </tr>   
+                </thead>
+                <tbody></tbody>
+                        {{# each product}}
+                    <tr>
+                        <td>{{this._id}}</td>
+                        <td>{{this.product_name}}</td>
+                        <td>{{this.category_id}}</td>
+                        <td>{{this.category_name}}</td>
+                        <td><a href="/product/{{this._id}}" ><i class="fa fa-pencil fa-lg" aria-hidden="true"></i></a></td>
+                        <td><a  href="/product/delete/{{this._id}}" onclick="return confirm('Are you sure you want to delete this record?');"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></a></td>
+                    </tr>    
+                    {{/each}}
+                </tbody>   
+            </table>
+        </div>
+        </body>
+
+    </html>
